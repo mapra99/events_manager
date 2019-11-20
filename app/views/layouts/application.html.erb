@@ -14,8 +14,7 @@
       <nav>
         <li><%= link_to "Home", root_path %></li>
         <% if current_user %>
-          <li>You are signed in as <%= @current_user.name %>. <%= link_to "Logout", logout_path, method: :delete %></li>
-          <li><%= link_to "Profile", @current_user %></li>
+          <li>You are signed in as <%= link_to @current_user.name, @current_user %>. <%= link_to "Logout", logout_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "Sign In", login_path %></li>
           <li><%= link_to "Sign Up", signup_path %></li>
