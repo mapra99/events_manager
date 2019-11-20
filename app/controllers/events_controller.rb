@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   def create
     @event = current_user.created_events.build(event_params)
     if @event.save
-      redirect_to root_path
+      redirect_to @event
     else
       render html: 'Error'
     end
