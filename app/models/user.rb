@@ -6,10 +6,10 @@ class User < ApplicationRecord
   has_many :attended_events, through: :attendings, source: :attended_event
 
   def upcoming_events
-    attended_events.where('date >= ?', Date.today)
+    attended_events.upcoming
   end
 
   def previous_events
-    attended_events.where('date < ?', Date.today)
+    attended_events.past
   end
 end
