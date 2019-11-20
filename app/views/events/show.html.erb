@@ -1,4 +1,11 @@
 <h1><%= @event.title %></h1>
 <span> <%= @event.location %>, <%= @event.date %> </span>
-<span> Created by: <%= @event.creator.name %> </span>
+<span> Created by: <%= link_to @event.creator.name, @event.creator %> </span>
 <p> <%= @event.description %> </p>
+
+<section>
+  <h2>People that will attend:</h2>
+  <%= render partial: 'shared/people',
+             locals: { people_group: @event.attendees }%>
+</section>
+
