@@ -11,5 +11,12 @@
   <h2><%= @user.name %> will attend:</h2>
 
   <%= render partial: 'shared/event',
-             locals: {events_group: @user.attended_events} %>
+             locals: {events_group: @user.upcoming_events} %>
+</section>
+
+<section>
+  <h2><%= @user.name %> will attend:</h2>
+
+  <%= render partial: 'shared/event',
+             locals: {events_group: @user.previous_events} %>
 </section>
