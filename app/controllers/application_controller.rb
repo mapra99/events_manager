@@ -20,4 +20,10 @@ class ApplicationController < ActionController::Base
 
     redirect_to current_user
   end
+
+  def only_logged_in_users
+    return if current_user
+    
+    redirect_to signup_path
+  end
 end
