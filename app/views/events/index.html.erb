@@ -1,7 +1,13 @@
 <h1>Events Manager!</h1>
 
 <section>
-  <h2> All the Events </h2>
+  <h2> All Upcoming Events </h2>
   <%= render partial: 'shared/event',
-             locals: { events_group: @events }%>
+             locals: { events_group: @upcoming_events }%>
+</section>
+
+<section>
+  <h2> All Past Events </h2>
+  <%= render partial: 'shared/event',
+             locals: { events_group: @past_events }%>
 </section>
