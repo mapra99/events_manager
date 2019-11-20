@@ -5,12 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-10.times do
+50.times do
   u = User.create(name: Faker::Games::WorldOfWarcraft.hero)
 end
 
-(1..5).each do |i|
-  u = User.find(i)
+10.times do
+  u = User.all.sample(1).first
   10.times do |j|
     u.created_events.create(title: Faker::Movie.quote,
                             description: Faker::Lorem.paragraph(sentence_count: 30),
@@ -19,3 +19,10 @@ end
   end
 end
 
+users = User.all.sample(20)
+users.each do |user|
+  events = Event.all.sample(10)
+  events.each do |event|
+    user.attendings.create(event_id: event.id)
+  end
+end

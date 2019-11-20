@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_20_173415) do
+ActiveRecord::Schema.define(version: 2019_11_20_211612) do
+
+  create_table "attendings", id: false, force: :cascade do |t|
+    t.integer "attendee_id"
+    t.integer "event_id"
+    t.index ["attendee_id", "event_id"], name: "index_attendings_on_attendee_id_and_event_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "title"
@@ -29,5 +35,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_173415) do
     t.index ["name"], name: "index_users_on_name"
   end
 
+  add_foreign_key "attendings", "events"
+  add_foreign_key "attendings", "users", column: "attendee_id"
   add_foreign_key "events", "users", column: "creator_id"
 end
