@@ -2,6 +2,7 @@
     <article>
       <h3> <%= event.title %> </h3>
       <h4> <%= event.location %>, <%= event.date %> </h4>
+      <span> Created by: <%= event.creator.name %> </span>
       <p> <%= event.description %> </p>
     </article>
 <% end %>
