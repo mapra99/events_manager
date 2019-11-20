@@ -3,12 +3,6 @@
 <section>
   <h2> <%= @user.name %>'s Events </h2>
 
-  <% @user.created_events.each do |event| %>
-    <article>
-      <h3> <%= event.title %> </h3>
-      <h4> <%= event.location %>, <%= event.date %> </h4>
-      <p> <%= event.description %> </p>
-    </article>
-  <% end %>
-
+  <%= render partial: 'shared/event',
+             locals: {events_group: @user.created_events} %>
 </section>
