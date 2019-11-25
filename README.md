@@ -1,4 +1,4 @@
-# Events Manager!!
+# Events Manager
 
 In Events Manager, you can organize and join events created by other people.
 The point of this project was to do some practice around Advanced Queries and Asssociations
