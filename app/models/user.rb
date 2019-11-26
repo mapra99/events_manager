@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :attendings, foreign_key: :attendee_id
   has_many :attended_events, through: :attendings, source: :attended_event
 
+  validates :name, presence: true, uniqueness: true
+
   def upcoming_events
     attended_events.upcoming
   end
