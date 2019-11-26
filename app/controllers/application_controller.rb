@@ -16,14 +16,10 @@ class ApplicationController < ActionController::Base
   private
 
   def redirect_if_logged_in
-    return unless current_user
-
-    redirect_to current_user
+    redirect_to current_user if current_user
   end
 
   def only_logged_in_users
-    return if current_user
-    
-    redirect_to signup_path
+    redirect_to signup_path unless current_user
   end
 end
