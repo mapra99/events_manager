@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EventsController < ApplicationController
-  before_action :only_logged_in_users, only: %i[new create]
+  before_action :authenticate_user!, only: %i[new create]
 
   def new
     @event = current_user.created_events.build

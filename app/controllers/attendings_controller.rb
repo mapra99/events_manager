@@ -1,5 +1,5 @@
 class AttendingsController < ApplicationController
-  before_action :only_logged_in_users
+  before_action :authenticate_user!
   before_action :only_new_attendees
 
   def create
