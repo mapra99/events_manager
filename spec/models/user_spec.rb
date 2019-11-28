@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
                                     description: 'This is the description of the event',
                                     date: Date.today,
                                     location: 'Example City')
-  
+
         @user.created_events.create(title: 'This is an event 2 title',
                                     description: 'This is the description of the event 2',
                                     date: 2.days.ago,
