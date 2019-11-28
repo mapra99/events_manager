@@ -31,4 +31,37 @@ RSpec.describe User, type: :model do
       expect(@user.previous_events).to include(@event2)
     end
   end
+
+  context 'validations for a user object' do
+    before(:example) do
+      @user = User.new(name: 'This is a user name', email: 'email@example.com',
+                       password: 'password123', password_confirmation: 'password123')
+    end
+
+    it 'must have a name' do
+      @user.name = ''
+      expect(@user.valid?).to eq(false)
+    end
+
+    it 'must have a name length up to 50 characters' do
+      @user.name = 'a' * 51
+      expect(@user.valid?).to eq(false)
+    end
+
+    it 'must have a valid email format' do
+      invalid_emails = ['not_an_email.com', 'myexample@gmail', '@gmail.com',
+                        'blabla@', 'blabla', '', 'a' * 246 + '@gmail.com']
+      invalid_emails.each do |email|
+        @user.email = email
+        expect(@user.valid?).to eq(false)
+      end
+    end
+
+    it 'must have a unique email' do
+      @user.save
+      user2 = @user.dup
+
+      expect(user2.valid?).to eq(false)
+    end
+  end
 end
